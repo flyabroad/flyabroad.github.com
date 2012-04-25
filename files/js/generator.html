@@ -1,0 +1,412 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Form field generator</title>
+<script language="JavaScript" src="validate.js"></script>
+
+<script>
+
+var currentField;
+var currentCode;
+var currentPattern;
+var currentStartTag;
+var currentEndTag;
+function normalize1()
+{
+//alert("Called");
+errormsgStr = "";
+if(document.forms[0].errMsgEnable.checked){
+	errormsgStr = "errormsg=\"" + document.forms[0].errormsg.value + "\"";
+}
+
+reqStr = "";
+if(document.forms[0].fieldRequired.checked){
+reqStr = "required=\"yes\""
+}else{
+reqStr = "required=\"no\"";
+}
+nameStr = "";
+nameStr = "name=\"" + document.forms[0].fieldName.value + "\"";
+
+
+
+specialChars = document.forms[0].fieldSpecialChars.value;
+if(specialChars != ""){
+spChStr = "authtype=\"" + specialChars + "\"";
+}else{
+spChStr = "";
+}
+
+if(typeof(currentPattern) != "undefined" && specialChars=="_custom"){
+patternStr = "pattern=\"" + currentPattern + "\"";
+}else{
+patternStr = "";
+}
+startTagStr = getStartTag();
+endTagStr = getEndTag();
+currentCode = startTagStr + " " + nameStr + " " + reqStr +  " "+ spChStr + "" + errormsgStr + " " + patternStr + endTagStr;
+document.forms[0].generatedCode.value = currentCode;
+document.getElementById("insertCode").innerHTML = currentCode;
+}
+
+function setTextRequired(obj)
+{
+
+reqStr = "";
+if(document.forms[0].fieldRequired.checked){
+document.getElementById('UDE').style.display = "";
+reqStr = "required=\"yes\""
+
+}else{
+document.getElementById('UDE').style.display = "none";
+reqStr = "required=\"no\"";
+}
+
+nameStr = "name=\"" + document.forms[0].fieldName.value + "\"";
+
+//nameStr = "";
+
+specialChars = document.forms[0].fieldSpecialChars.value;
+if(specialChars != ""){
+spChStr = "authtype=\"" + specialChars + "\"";
+}else{
+spChStr = "";
+}
+//alert(typeof(currentPattern));
+if(typeof(currentPattern) != "undefined" && specialChars=="_custom"){
+patternStr = "pattern=\"" + currentPattern + "\"";
+}else{
+patternStr = "";
+}
+
+startTagStr = getStartTag();
+endTagStr = getEndTag();
+
+currentCode = startTagStr + " " + nameStr + " " + reqStr +  " "+ spChStr + "" + errormsgStr + " " + patternStr + endTagStr;
+document.forms[0].generatedCode.value = currentCode;
+document.getElementById("insertCode").innerHTML = currentCode;
+}
+
+function setTextEnabled(obj)
+{
+	if(document.forms[0].errMsgEnable.checked){
+		document.forms[0].errormsg.disabled = false;
+		normalize1();
+	}else{
+		document.forms[0].errormsg.disabled = true;
+		normalize1();
+	}
+}
+
+function getStartTag()
+{
+				
+				if(currentField == "text"){
+							return "<input type=\"text\" ";
+				}
+				else if(currentField == "password"){
+							return "<input type=\"password\" ";
+				}
+				else if(currentField == "checkbox"){
+							return "<input type=\"checkbox\" ";
+				}
+				else if(currentField == "radio"){
+							return "<input type=\"radio\" ";
+				}
+				else if(currentField == "file"){
+							return "<input type=\"file\" ";
+				}
+				else if(currentField == "textarea"){
+							return "<textarea ";
+				}
+				else if(currentField == "select-one"){
+							return "<select ";
+				}
+				else if(currentField == "select-multiple"){
+							return "<select multiple=ture ";
+				}
+
+				
+
+}
+
+function getEndTag()
+{
+				if(currentField == "text" || currentField == "password" || currentField == "radio" || currentField == "file" || currentField == "checkbox"){
+							return " />";
+				}
+				else if(currentField == "textarea"){
+							return " /></textarea>";
+				}
+				else if(currentField == "select-one"){
+							return " /><option value=\"\">---Please Select---</option><option value=1>Option 1</option><option value=2>Option 2</option><option value=3>Option 3</option></select>";
+				}
+				else if(currentField == "select-multiple"){
+							return " size=2 /><option value=1>Option 1</option><option value=2>Option 2</option><option value=3>Option 3</option></select>";
+				}
+}
+
+function setSpecialChars(obj)
+{
+reqStr = "";
+nameStr = "name=\"" + document.forms[0].fieldName.value + "\"";
+reqStr = "";
+if(document.forms[0].fieldRequired.checked){
+reqStr = "required=\"yes\""
+}else{
+reqStr = "required=\"no\"";
+}
+specialChars = document.forms[0].fieldSpecialChars.value;
+if(specialChars != ""){
+spChStr = "authtype=\"" + specialChars + "\"";
+}else{
+spChStr = "";
+}
+if(typeof(currentPattern) != "undefined" && specialChars=="_custom"){
+patternStr = "pattern=\"" + currentPattern + "\"";
+}else{
+patternStr = "";
+}
+
+startTagStr = getStartTag();
+endTagStr = getEndTag();
+
+if(specialChars != "" && specialChars != "_custom"){
+
+currentCode = startTagStr + " " + nameStr + " " + reqStr +  " "+ spChStr + "" + errormsgStr + " " + patternStr + endTagStr;
+document.forms[0].generatedCode.value = currentCode;
+document.getElementById("insertCode").innerHTML = currentCode;
+}
+else if(obj.value == "_custom"){
+
+currentPattern = prompt("Please Enter Regular Expression ?");
+patternStr = "pattern=\"" + currentPattern + "\"";
+currentCode = startTagStr + " " + nameStr + " " + reqStr +  " "+ spChStr + "" + errormsgStr + " " + patternStr + endTagStr;
+document.forms[0].generatedCode.value = currentCode;
+document.getElementById("insertCode").innerHTML = currentCode;
+
+}
+else{
+
+currentCode = startTagStr + " " + nameStr + " " + reqStr +  " "+ spChStr + "" + errormsgStr + " " + patternStr + endTagStr;
+document.forms[0].generatedCode.value = currentCode;
+}
+document.getElementById("insertCode").innerHTML = currentCode;
+}
+
+function otherTable()
+{
+					myStr = "<table width=100% border=1 cellpadding=5 bordercolor=#CCCCCC style=\"border-collapse:collapse;\">";
+					myStr += "<tr>";
+					myStr += "<td align=left>";
+					myStr += "<font color=#FF0000><B>Field Name : </B></font>";
+					myStr += "</td>";
+					myStr += "<td>";										
+					myStr += "<input type=text name=fieldName size=20  onBlur=\"normalize1();\"  >";
+ 					myStr += "</td>";
+					myStr += "<td align=left>";
+					myStr += "<B>Enter</B>, the name of the field.";
+					myStr += "</td>";
+					myStr += "</tr>";	
+					myStr += "<tr>";
+					myStr += "<td align=left>";
+					myStr += "<font color=#FF0000><B>Validation Required : </B></font>";
+					myStr += "</td>";
+					myStr += "<td>";										
+					myStr += "<input type=checkbox id=fieldRequired name=fieldRequired onClick=\"setTextRequired(this);\"> <label for=fieldRequired >Required</label>";
+ 					myStr += "</td>";
+					myStr += "<td align=left>";
+					myStr += "<B>Check</B>, if this field must not left blank.";
+					myStr += "</td>";
+					myStr += "</tr>";			
+					myStr += "<tr>";
+					myStr += "<td align=left>";
+					myStr += "<font color=#FF0000><B>Special Characters Validation : </B></font>";
+					myStr += "</td>";
+					myStr += "<td>";									
+					myStr += "<select name=fieldSpecialChars onChange=\"setSpecialChars(this);\">";
+					myStr += "<option value=\"\">--Select One--</option>";
+					myStr += "<option value=\"_specialChars\">Special characters</option>";
+					myStr += "<option value=\"_specialCharsAndNumbers\">Special characters and Numbers</option>";
+					myStr += "<option value=\"_digits\">ONLY DIGITS</option>";
+					myStr += "<option value=\"_email\">EMAIL</option>";
+					myStr += "<option value=\"_url\">URL (WEBSITE ADDRESS)</option>";
+					myStr += "<option value=\"_date\">DATE</option>";
+					myStr += "<option value=\"_phoneNumber\">PHONE NUMBER</option>";
+					myStr += "<option value=\"_mobileNumber\">MOBILE NUMBER</option>";
+					myStr += "<option value=\"_usPhoneNumber\">U.S. PHONE / MOBILE  NUMBER</option>";
+					myStr += "<option value=\"_zip\">PINCODE / ZIPCODE</option>";
+					myStr += "<option value=\"_username\">USER-NAME</option>";
+					myStr += "<option value=\"_flName\">FIRST/LAST NAME</option>";
+					myStr += "<option value=\"_currency\">AMOUNT/CURRENCY</option>";
+
+
+
+
+					myStr += "<option value=\"_custom\">Custom Pattern</option>";
+					myStr += "</select>";
+ 					myStr += "</td>";
+					myStr += "<td align=left>";
+					myStr += "<B>Select</B>, one of the rule for validation.";
+					myStr += "</td>";
+					myStr += "</tr>";									
+					myStr += "<tr id=UDE style=\"display:none\" >";
+					myStr += "<td align=left>";
+					myStr += "<font color=#FF0000><B>User defined error Message : </B></font>";
+					
+					myStr += "</td>";
+					myStr += "<td>";										
+					myStr += "<input type=text disabled value=\"Please Enter...\" name=errormsg onBlur=\"normalize1();\" >";
+					myStr += "<input type=checkbox id=errMsgEnable name=errMsgEnable onClick=\"setTextEnabled(this);\"> <label for=errMsgEnable >Enable</label>";
+ 					myStr += "</td>";
+					myStr += "<td align=left>";
+					myStr += "<B>Enter</B>, the name of the field.";
+					myStr += "</td>";
+					myStr += "</tr>";		
+					myStr += "</table>";
+return myStr;					
+}
+
+
+
+
+function showMoreOptions(obj)
+{
+
+if(obj.value == "text" || obj.value == "password" || obj.value == "file" || obj.value == "checkbox" || obj.value == "radio"){
+
+					currentField = obj.value;
+					currentCode = "<input type=\"" + currentField + "\" required=\"no\" >";
+					setValues();
+
+				}
+				else if(obj.value == "textarea"){
+
+					currentField = obj.value;
+					currentCode = "<textarea required=\"no\" ></textarea>";
+					setValues();
+
+				}
+				else if(obj.value == "select-one"){
+				//|| obj.value == "select-multiple"){
+					currentField = obj.value;
+					currentCode = "<select ><option value=\"\">---Please Select---</option><option value=1>Option 1</option><option value=2>Option 2</option><option value=3>Option 3</option></select>";
+					setValues();
+
+				}
+				else if(obj.value == "select-multiple"){
+					currentField = obj.value;
+					currentCode = "<select size=2><option value=1>Option 1</option><option value=2>Option 2</option><option value=3>Option 3</option></select>";
+					setValues();
+				}
+				else if(obj.value == ""){
+					
+					currentField = "";
+					currentCode = "";
+					setValues();
+					document.getElementById("moreOptions").style.display = "none";
+					document.forms[0].generatedCode.value = "";
+
+				}
+
+				
+
+}
+function setValues()
+{
+				document.getElementById("moreOptions").style.display = "";
+				document.forms[0].generatedCode.value = currentCode;
+				document.forms[0].fieldName.focus();
+}
+</script>
+<style>
+td{
+font-size:10pt;
+font-family:Verdana,Tahoma;
+}
+input{
+font-size:10pt;
+font-family:Vardana,Tahoma;
+}
+select{
+font-size:10pt;
+font-family:Verdana,Tahoma;
+}
+
+</style>
+</head>
+
+<body bgcolor=#F1F1F1 >
+<div align=center>
+<B> <font size="2" face="Verdana">Generic JavaScript validator 1.0 (beta)</font><font face="Courier New"><br>
+</font>&nbsp;<br>
+<font color="#000080" face="Arial">The Code Generator</font><br>
+</B><BR>
+<table border="0" width="750" id="table1" align=center cellpadding=7 cellspacing=0 style="border-collapse:collapse;border:2px #CCCCCC outset" bordercolor=#666666 >
+<form onsubmit="return false();">
+	<tr>
+		<td width="50%"><b>Please select the field</b></td>
+		<td width="50%">&nbsp;
+		<select name=fieldType size="1" onchange="showMoreOptions(this)">
+		<option>---Please Select---</option>
+		<option value="text">TEXT</option>
+		<option value="password">PASSWORD</option>
+		<option value="file">FILE</option>
+		<option value="textarea">TEXTAREA</option>
+		<option value="select-one">SELECT-ONE</option>
+		<option value="select-multiple">SELECT-MULTIPLE</option>
+		<option value="radio">RADIO</option>
+		<option value="checkbox">CHECKBOX</option>
+		</select>
+		</td>
+	</tr>
+	<tr >
+	<td id="moreText" colspan=2><b>Please Select the Options</b></td>
+	</tr>
+	<tr id="moreOptions" style="display:none">
+	<td colspan=2 id="moreField">
+<table width=100% border=1 cellpadding=5 bordercolor=#CCCCCC style="border-collapse:collapse;"><tr><td align=left><font color=#FF0000><B>Field Name : </B></font></td><td><input type=text name=fieldName size=20 onBlur="normalize1();" ></td><td align=left><B>Enter</B>, the name of the field.</td></tr><tr><td align=left><font color=#FF0000><B>Validation Required : </B></font></td><td><input type=checkbox id=fieldRequired name=fieldRequired onClick="setTextRequired(this);"> <label for=fieldRequired >Required</label></td><td align=left><B>Check</B>, if this field must not left blank.</td></tr><tr><td align=left><font color=#FF0000><B>Special Characters Validation : </B></font></td><td><select name=fieldSpecialChars onChange="setSpecialChars(this);"><option value="">--Select One--</option><option value="_specialChars">Special characters</option><option value="_specialCharsAndNumbers">Special characters and Numbers</option><option value="_digits">ONLY DIGITS</option><option value="_email">EMAIL</option><option value="_url">URL (WEBSITE ADDRESS)</option><option value="_date">DATE</option><option value="_phoneNumber">PHONE NUMBER</option><option value="_mobileNumber">MOBILE NUMBER</option><option value="_usPhoneNumber">U.S. PHONE / MOBILE NUMBER</option><option value="_zip">PINCODE / ZIPCODE</option><option value="_username">USER-NAME</option><option value="_flName">FIRST/LAST NAME</option><option value="_currency">AMOUNT/CURRENCY</option><option value="_custom">Custom Pattern</option></select></td><td align=left><B>Select</B>, one of the rule for validation.</td></tr><tr id=UDE style="display:none" ><td align=left><font color=#FF0000><B>User defined error Message : </B></font></td><td><input type=text disabled value="Please Enter..." name=errormsg onBlur="normalize1();" ><input type=checkbox id=errMsgEnable name=errMsgEnable onClick="setTextEnabled(this);"> <label for=errMsgEnable >Enable</label></td><td align=left><B>Enter</B>, the name of the field.</td></tr></table>
+	</td>
+	</tr>
+	<tr>
+	<td colspan=2>
+	Generated Code<br>
+	<textarea name=generatedCode readonly style="height:42px;width:700px;font-size:12pt" rows="1" cols="20"></textarea>
+	</td>
+	</tr>
+	</form>
+	</table>
+	</div>
+
+	<BR>
+	<table border=0 cellpadding=0 cellspacing=0 align=center style="border:1px #666666 solid;height:80px;width:300px" >
+	<form method=post action="" >
+	<tr>
+	<td align=center colspan=2>
+	<b><font color="#FF0000">Simulation</font></b>
+	</td>
+	</tr>
+	<tr>
+	<td id="insertCode" align=right>&nbsp;
+	</td>
+	<td style="width:100px">&nbsp;
+	<input type=submit value="submit" style="border:1px solid #CCCCCC">
+	</td>
+	</tr>
+	</form>
+	</table>
+<p>	
+<B> <font size="2" face="Verdana">Generic JavaScript validator 1.0 (beta)</font></B><font size="2" face="Verdana"><br>
+&nbsp;&nbsp;&nbsp; <br>
+It is a simple but powerful cross-browser JavaScript that 
+combines DOM and regulars expressions for the client-side validation of forms. 
+It can validate any number of form on HTML documents. It also supports user 
+defined JavaScript functions.<br>
+<br>
+<a href="GenericJavaScriptValidator.zip">Click here to Download</a> Generic 
+JavaScript validator 1.0 (beta)</font></p>
+
+</body>
+
+</html>

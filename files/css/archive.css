@@ -1,0 +1,26 @@
+/*
+Part of SMF SEO
+http://www.smfseo.net
+*/
+body
+{
+margin: 10px;
+}
+#fullver
+{
+font-weight: bold;
+font-size: large;
+}
+#menu
+{
+float: right;
+text-align: center;
+}
+#pages
+{
+font-weight: bold;
+}
+#footer,#main,#forum,#topic,#linktree
+{
+ border: 1px solid gray;
+}

@@ -1,0 +1,21 @@
+body {
+    font-family: Georgia, Verdana, Arial, Times;
+	line-height: 130%;
+	width: 155mm;
+    color: #333;
+	margin-top: 10mm;
+	margin-bottom: 10mm;
+    font-style: normal;
+}
+
+td, th {
+    font-family: Georgia, Verdana, Arial, Times;
+	line-height: 130%;
+	width: 155mm;
+    color: #333;
+    font-style: normal;
+}
+
+hr {
+	display: none;
+}

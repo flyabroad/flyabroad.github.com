@@ -1,0 +1,213 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Example form 1</title>
+</head>
+<script src="validate.js" type="text/javascript" language="javascript"></script>
+<style>
+textarea{
+border:#CCCCCC 1px solid;
+}
+input{
+border:#CCCCCC 1px solid;
+}
+td{
+color:#FF0000;
+padding-left:10;
+width:300px;
+font-family:sans-serif;
+font-size:10pt;
+}
+</style>
+<script type="text/javascript">
+function comparePasswords()
+{
+	if(document.f1.pass1.value != document.f1.pass2.value){
+	alert("Both passwords must be matched...!");
+	return false;
+	}
+	return true;
+}
+
+register(comparePasswords);
+
+</script>
+<body>
+<table bgcolor=#F1F1F1 border=0 width=600 align=center cellspacing=0 cellpadding=0 style="border:#CCCCCC 1px solid">
+<form name=f1 action="" method=post  >
+<tr>
+<td height=30 colspan=2 bgcolor=#CCCCCC style="color:#000000"> 
+Generic JavaScript Validator Demo
+</td>
+</tr>
+<tr>
+<td height=30>
+Username : 
+</td>
+<td height=30>
+<!-- No special chars allowed for username -->
+<!--
+See Field Username's Attribute :-
+=================================
+required = "yes" => checks for empty field
+authtype = "_username" => Compares entered username with standard username pattern.
+----------------------------------------------------------------------------------
+i.e. No digit & special chars allowed in starting of username, dot & underscore are allowed in between username.
+-->
+<input type="text" required="yes" authtype="_username" maxlength=8  name="username"  />
+</td>
+</tr>
+<tr>
+<td height=30  >
+Password : 
+</td>
+<td height=30  >
+<input type="password"  name="pass1" required="yes"   />
+</td>
+</tr>
+<tr>
+<td height=30>
+Re-type Password : 
+</td>
+<td height=30>
+<input type="password"  name="pass2" required="yes"   />
+</td>
+</tr>
+<tr>
+<td height=30>
+Email Address : 
+</td>
+<td height=30>
+<!-- Checks for valid email pattern -->
+<!--
+See Field email's Attribute :-
+=================================
+required = "yes" => checks for empty field
+authtype = "_email" => Compares entered email with standard email pattern.
+----------------------------------------------------------------------------------
+i.e. checks for username@hostname
+-->
+<input type="text"  name="email" authtype="_email" required="yes" />
+</td>
+</tr>
+<tr>
+<td height=30>
+Full name :
+</td>
+<td height=30>
+<!-- Checks for valid full name pattern -->
+<!--
+See Field email's Attribute :-
+=================================
+required = "yes" => checks for empty field
+authtype = "_specialCharsAndNumbers" => It wont allow any special chars except space.
+-->
+<input type="text"  name="fullname" authtype="_specialCharsAndNumbers" required="yes"   />
+</td>
+</tr>
+<tr>
+<td height=30 valign=top style="color:#000000">
+Home Address : 
+</td>
+<td height=30>
+<!-- Checks for valid email pattern -->
+<!--
+See Field homeaddress's Attribute :-
+=================================
+required = "yes" => checks for empty field
+----------------------------------------------------------------------------------
+Remarks : it will allow, speace and numbers
+-->
+<textarea  name="homeaddress" required="no" rows=2 cols=20></textarea>
+</td>
+</tr>
+<tr>
+<td height=30 valign="top">
+Gender : 
+</td>
+<td height=30 style="color:#000000" >
+<!-- Checks for valid radio option -->
+<!--
+See Field email's Attribute :-
+=================================
+required = "yes" => checks for empty field
+authtype = "_email" => Compares entered email with standard email pattern.
+----------------------------------------------------------------------------------
+i.e. checks for username@hostname
+-->
+<input errormsg="Please select gender." type=radio name=gender value=M required="yes">Male&nbsp;<input type=radio name=gender value=F required="yes">Female&nbsp;<input type=radio name=gender value=O required="yes">Other<br>
+</td>
+</tr>
+<tr>
+<td height=30 valign="top">
+Education : 
+</td>
+<td height=30 style="color:#000000">
+<input required="yes" errormsg="Please select education" type=checkbox name=education value=BE >B.E. / B.Tech<br>
+<input type=checkbox  required="yes" name=education value=ME >M.E. / M.Tech<br>
+<input type=checkbox required="yes" name=education value=PHD >PHD
+</td>
+</tr>
+<tr>
+<td height=30 valign="top">
+Instiute :
+</td>
+<td height=30>
+<!-- Checks for multiple select -->
+<!--
+See Field email's Attribute :-
+=================================
+required = "yes" => You must have to select atleast one of the option from multiple-select.
+-->
+<select required="yes" errormsg="Please select the institute." name="institutes[]" style=color:#000099;width:160px;height:74px;background:#F1F1F1" multiple="true" >
+<option value="1">IISc Bangalore</option>
+<option value="2">IITs</option>
+<option value="3">NITs</option>
+<option value="4">BITS Pilani</option>dat
+<option value="5">Other</option>
+</select>
+</td>
+</tr>
+<tr>
+<td height=30 valign="top">
+Team :
+</td>
+<td height=30>
+<!-- Checks for single select -->
+<!--
+See Field email's Attribute :-
+=================================
+required = "yes" => You must have to select atleast one of the option from select-select which doesnt contain empty value.
+-->
+<select name=interest required="yes">
+<option value="">--- please select ---</option>
+<option value="1"><B>PHP</B></option>
+<option value="2">DOT NET</option>
+<option value="3">RIA</option>
+<option value="4">DESIGN</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td height=30>
+Secret Code : (vikas)
+</td>
+<td height=30>
+<input type=text name=optional authtype="_custom" errormsg="Please enter just vikas." pattern="^vikas$" required="yes" >
+</td>
+</tr>
+<tr>
+<td height=30>
+</td>
+<td height=30>
+<input type=submit name=submitBtn value="Register">
+<input type=reset name=submitBtn value="Clear form">
+</td>
+</tr>
+</form>
+</table>
+
+</body>
+
+</html>

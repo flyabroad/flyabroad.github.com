@@ -1,0 +1,397 @@
+<html>
+<head>
+<META name="verify-v1" content="7FWBv0w0PQO8j85TVKgOqw9TezfQn6TCZ1XWvbgIVWQ=" />
+<META NAME="TITLE" CONTENT="Generic JavaScript validator 1.0 (beta) [JavaScript validation through DOM ] - by Vikas Bhagwagar">
+<META NAME="DESCRIPTION" CONTENT="Generic JavaScript validator 1.0 (beta) is a simple but powerful cross-browser JavaScript that combines DOM and regulars expressions for the client-side validation of forms. It can validate any number of form on HTML documents. It also supports user defined JavaScript functions.">
+<META NAME="KEYWORDS" CONTENT="javascript,validation,dom,ajax,document object model,regular expression">
+<META NAME="OWNER" CONTENT="vikaskbh@yahoo.com">
+<META NAME="AUTHOR" CONTENT="Vikas Bhagwagar">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 31 Dec 2010 00:00:01 PST">
+<META HTTP-EQUIV="CHARSET" CONTENT="ISO-8859-1">
+<META HTTP-EQUIV="CONTENT-LANGUAGE" CONTENT="English">
+<META HTTP-EQUIV="VW96.OBJECT TYPE" CONTENT="Tutorial">
+<META NAME="RATING" CONTENT="General">
+<META NAME="ROBOTS" CONTENT="index,follow">
+<META NAME="REVISIT-AFTER" CONTENT="1 week">
+<title>Generic JavaScript validator 1.0 (beta) [JavaScript validation through DOM ] - by Vikas Bhagwagar</title>
+
+
+<style type="text/css">
+body {
+	font-family: Verdana;
+	font-size: 10pt;
+	width: 95%;
+	background: #ffffff;
+    padding-left:20pt;
+}
+h1, h2 {
+	font-family: Verdana;
+	font-weight: normal;
+}
+h2 {
+	font-size: 18pt;
+}
+
+.code {
+	font-family: Courier New;
+	font-size: 12pt;
+	width: 700px;
+	background: #F1F1F1;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	padding-left:20px;
+	padding-right:20px;
+	border:1px #666666 solid;
+}
+
+table {
+	width: 95%;
+	font-family: Verdana;
+	font-size: 10pt;
+	background: #f1f1f1;
+}
+
+th {
+	font-family: Verdana;
+	font-weight: normal;
+	font-style: italic;
+	font-size: 10pt;
+	text-align: left;
+	vertical-align: top;
+	padding-bottom: 20px;
+}
+
+td {
+	vertical-align: top;
+	padding-bottom: 20px;
+}
+
+</style>
+<script type="text/javascript" src="validate.js"></script>
+<LINK href="print.css" type="text/css" rel="stylesheet" media="print">
+</head>
+
+<body>
+<h1>Generic JavaScript validator 1.0 (beta)</h1>
+ <strong>Download:</strong>
+<a href="https://sourceforge.net/projects/js-validator/">https://sourceforge.net/projects/js-validator/</a><BR>
+ <strong>License</strong>:
+                                     <a href="https://sourceforge.net/softwaremap/trove_list.php?form_cat=15">GNU General Public License (GPL)</a>                            <br />  
+
+                                      </p>
+<BR>by Vikas Bhagwagar<br>
+
+<br>
+<a href="javascript:;" onclick="javascript:self.print()">Print this document</a>
+<br><br>
+Table of contents<BR>
+<UL>
+<LI>1. <a href="#cap1">What is it?</A></LI>
+<LI>2. <a href="#cap2">Include .js file</A></LI>
+<LI>3. <a href="#cap3">Attributes list</A></LI>
+<LI>4. <a href="#cap4">Some examples</A></LI>
+<LI>5. <a href="#cap6">User defined functions</a></LI>
+<LI>6. <a href="generator.html">Easy Code Generator</a> for Generic JavaScript validator 
+1.0 (beta)</LI>
+<LI>7. <font face="Verdana" size="2"><a href="GenericJavaScriptValidator.zip">
+Click here to Download</a> Generic JavaScript validator 1.0 (beta)</font></LI>
+</UL>
+<HR><BR>
+
+<P>
+<a name="cap1"></a>
+<h2>1. What is it?</h2>
+<p>
+<B> <font size="2" face="Verdana">Generic JavaScript validator 1.0 (beta)</font></B><font size="2" face="Verdana"> is a simple but powerful cross-browser JavaScript that 
+combines DOM and regulars expressions for the client-side validation of forms. 
+It can validate any number of form on HTML documents. It also supports user 
+defined JavaScript functions.</font></p>
+<HR><BR>
+
+<P>
+<a name="cap2"></a>
+<h2>2. Include .js file</h2>
+Inside &lt;head&gt; section of the html with the form inside you insert these lines<BR><BR>
+<div class="code">
+&lt;script language=&quot;JavaScript&quot; type="text/javascript" src="validate.js"&gt;&lt;/script&gt;<BR>
+</div><BR>
+<HR><BR>
+
+<P>
+<a name="cap3"></a>
+<h2>3. Attributes list</h2>
+<BR>
+<table border="1" style="border-collapse:collapse" bordercolor="#FFFFFF">
+<th width="20%"><span style="font-style: normal; font-weight: 700">&nbsp;Attribute</span></th>
+<th width="30%"><span style="font-style: normal; font-weight: 700">Allowed values</span></th>
+<th width="50%"><span style="font-style: normal; font-weight: 700">Behavior</span></th>
+</tr>
+
+<tr>
+<td>&nbsp;required</td>
+<td>[yes | no]</td>
+<td>if set to "yes" this field can't be left empty (you must insert at least one char). 
+If set to "no" the field becomes optional, but if a value is inserted, it must match with a 
+pattern.</td>
+</tr>
+
+<tr>
+<td>&nbsp;authtype<br>
+&nbsp;[Authentication type]</td>
+<td>&nbsp;_specialChars</td>
+<td>No Special characters allowed, but numbers are allowed.</td>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;_specialCharsAndNumbers</td>
+<td>No Special characters and numbers are allowed.</td>
+</tr>
+
+
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;_digits</td>
+<td>No numbers are allowed.</td>
+</tr>
+
+
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;_email</td>
+<td>Checks for valid with standard Email regular expression.</td>
+</tr>
+
+
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;_url</td>
+<td>Checks for valid website address. Website address like&nbsp;
+<a href="http://www.www.www">http://www.www.www</a> or
+<a href="http://www.www.www">www.www.www</a> are allowed.</td>
+</tr>
+
+
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;_date</td>
+<td>Date format <font color="#FF0000">DD-MM-YYYY</font>, <font color="#FF0000">
+DD/MM/YYYY</font> and <font color="#FF0000">DD.MM.YYYY</font> are allowed. Also 
+checks for leap year and invalid months as well as days.</td>
+</tr>
+
+
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;_phoneNumber</td>
+<td>Checks for Digits only</td>
+</tr>
+
+
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;_mobileNumber</td>
+<td>Match for mobile number pattern <font color="#FF0000">(+xx)xxxxxxxxxx</font> 
+or <font color="#FF0000">xxxxxxxxxx</font></td>
+</tr>
+
+
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;_usPhoneNumber</td>
+<td>Match for standard US phone number pattern <font color="#FF0000">(xxx)xxx-xxxx</font></td>
+</tr>
+
+
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;_zip</td>
+<td><ul>
+<li>Checks for Digits only (must be of 5 or 6 digits length)</li>
+<li>Its also allows U.K. postcode</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td bgcolor=#CCCCCC>&nbsp;</td>
+<td bgcolor=#CCCCCC>&nbsp;_username</td>
+<td bgcolor=#CCCCCC>Checks for username pattern.
+<ul>
+<li>No special characters allowed at starting of username.</li>
+<li>(.-_) dot,dash,underscore may come in between a username.</li>
+<li>End character of username may contain alpha-numeric values.</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td bgcolor=#CCCCCC >&nbsp;</td>
+<td bgcolor=#CCCCCC >&nbsp;_flName</td>
+<td bgcolor=#CCCCCC >Checks for First/Last Name pattern.
+No special characters allowed in First/Last name.
+</td>
+</tr>
+<tr>
+<td bgcolor=#CCCCCC >&nbsp;</td>
+<td bgcolor=#CCCCCC >&nbsp;_currency</td>
+<td bgcolor=#CCCCCC >Checks for decimal or float values
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;pattern</td>
+<td>Any pattern, which you are going to specify in to pattern attribute.</td>
+</tr>
+
+
+<tr>
+<td>&nbsp;errormsg</td>
+<td>Error Message</td>
+<td>Specify, your own error message alert. </td>
+</tr>
+
+
+<tr>
+<td>&nbsp;pattern</td>
+<td>Your own Regular Expression or Pattern for comparison with user input.</td>
+<td>If specified, after formal validation, routine executes the function with that name that check the
+submitted value. The function must pass <cite>val</cite> and <cite>name</cite>.<br><br>
+<cite>val</cite> is the value to check and <cite>name</cite> is the name of the input or , if defined,
+the value of &lt;altname&gt; attribute.
+
+</td>
+</tr>
+</table>
+<BR><br>
+
+<P>
+<a name="cap4"></a>
+<h2>4. Some examples</h2>
+
+<a href="example1.html">Click here</a> to browse example page.<br><br>
+
+<a name="cap6"></a>
+<h3>(I) Date Validation</h3>
+<BR>
+<div id="ex1">
+<form name=myform1 >
+Please enter the date : <input type=text required="yes" authtype="_date"> DD-MM-YYYY or DD/MM/YYYY or DD.MM.YYYY
+<BR>
+<input type=submit value=Submit>
+</form>
+</div>
+<br>
+Code<div class="code">
+<script>
+code = document.getElementById("ex1").innerHTML;
+code = code.replace(/</g, "&lt;");
+code = code.replace(/>/g,"&gt;<BR>");
+document.write(code);
+</script>
+</div>
+<h3>(II) Zip/Pincode Validation</h3>
+<BR>
+<div id="ex2">
+<form name=myform2 >
+Pincode : <input type=text required="yes" authtype="_zip"> Indian Postal code(395001), US zip(23456) Code and UK postcodes (TW3 3AS) allowed.<BR>
+<input type=submit value=Submit>
+</form>
+</div>
+<br>
+Code<div class="code">
+<script>
+code = document.getElementById("ex2").innerHTML;
+code = code.replace(/</g, "&lt;");
+code = code.replace(/>/g,"&gt;<BR>");
+document.write(code);
+</script>
+</div>
+<h3>(III) Custom Pattern</h3>
+<BR>
+<div id="ex3">
+<form name=myform1 >
+Only Jpg files : <input type=file errormsg="Only jpg file allowed." required="yes" authtype="_custom" pattern="jpg$">
+<input type=submit value=Submit>
+</form>
+</div>
+<br>
+Code<div class="code">
+<script>
+code = document.getElementById("ex3").innerHTML;
+code = code.replace(/</g, "&lt;");
+code = code.replace(/>/g,"&gt;<BR>");
+document.write(code);
+</script>
+</div>
+<h2>5. User defined functions</h2>
+Inside HTML code write: <br><br> 
+<div class="code" style="width: 680px; height: 246px">
+&lt;script language=&quot;JavaScript&quot;&gt;<br>
+function comparePasswords()<br>
+{<br>
+if(document.f1.pass1.value != document.f1.pass2.value){<br>
+alert(&quot;Both passwords must be matched...!&quot;);<br>
+document.f1.pass2.focus();<br>
+return false; // must return false/true for execution of your<br>
+}<br>
+return true; // must return false/true for execution of your<br>
+}<br>
+<br>
+register(comparePasswords); // it will register user functions to validator.js<br>
+<br>
+&lt;/script&gt;
+<br>
+</div>
+<script>
+
+function comparePasswords()
+{
+	if(document.f1.pass1.value != document.f1.pass2.value){
+	alert("Both passwords must be matched...!");
+	document.f1.pass2.focus();
+	return false;
+	}
+	return true;
+}
+
+register(comparePasswords);
+
+</script>
+<div id=UDF>
+<form name=f1 action="index.html" method=post  >
+<br>
+Password 1 <input type="password"  name="pass1" required="yes" size="20"   /><BR>
+Password 2 <input type="password"  name="pass2" required="yes" size="20"   /><BR>
+Author 
+<input type=text name=optional authtype="_custom" errormsg="Please enter just vikas" pattern="^vikas$" required="yes" size="20" > 
+(must have to enter vikas)<BR>
+Select image 
+<input type=file name=myfile authtype="_custom" pattern="jpg$" errormsg="Only jpg file allowed" required="yes" size="20" > 
+(Only jpg file allowed)<br>
+ <input type="submit" value="Submit">
+</form></div>
+<br><br>
+Code<div class="code">
+<script>
+code = document.getElementById("UDF").innerHTML;
+code = code.replace(/</g, "&lt;");
+code = code.replace(/>/g,"&gt;<BR>");
+document.write(code);
+</script>
+</div>
+<br>
+<div align=center>
+<script type="text/javascript"><!--
+google_ad_client = "pub-5101575339640899";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+<BR>
+
+&nbsp;</body></html>

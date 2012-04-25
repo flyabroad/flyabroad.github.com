@@ -1,0 +1,10 @@
+<?php
+include("include.php");
+
+$sql = "INSERT INTO pinggu (chenghu, bxingbie, bmonth, byear, bhunyin, juzhu, hukou, email, dianhua, xueli, gongzuonianxian, zhuanye, hangye, shenqingguojia, bqianzheng, cunkuan, bfanzui, ysting, ysdu, ysxie, yspingjun, ysshuo, tefting, tefdu, tefxie, tefpingjun, fourji, sixji, gaozhonghouxueli, gongzuojingli, peiouqingkuang, juqianjilu, guowaiqinshu£¬submitdate) VALUES ('$chenghu',  '$bxingbie', '$bmonth', '$byear', '$bhunyin', '$juzhu', '$hukou', '$email', '$dianhua', '$xueli', '$gongzuonianxian', '$zhuanye', '$hangye', '$shenqingguojia', '$bqianzheng', '$cunkuan', '$bfanzui', '$ysting', '$ysdu', '$ysxie', '$yspingjun', '$ysshuo', '$tefting', '$tefdu', '$tefxie', '$tefpingjun', '$fourji', '$sixji', '$gaozhonghouxueli', '$gongzuojingli', '$peiouqingkuang', '$juqianjilu', '$guowaiqinshu'£¬SYSDATE())";
+
+$result = mysql_query($sql);
+//print_r(mysql_affected_rows());
+//mysql_free_result();
+header('Location: http://www.flyabroad111.com/common/sended.html');
+?>
