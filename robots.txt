@@ -1,0 +1,19 @@
+User-agent: *
+
+Disallow: /files/
+
+Disallow: /misc/
+
+Disallow: /js/
+
+Disallow: /bbs/
+
+Disallow: /blog/
+
+Disallow: /css/
+
+Disallow: /images/
+
+Disallow: /themes/
+
+Sitemap: http://www.flyabroadvisa.com/sitemap.xml
