@@ -2,7 +2,7 @@
 
 if [ $# -lt 1 ]
 then
-        echo -n "请输入commit的注释信息"
+        echo -n "please input commit message:"
         read commit_message
 else
 	echo "first-args=$1"
@@ -10,6 +10,6 @@ else
 fi
 
 git pull
-git add . -A
-git commit -m $commit_message
+git add .
+git commit -m "$commit_message"
 git push
