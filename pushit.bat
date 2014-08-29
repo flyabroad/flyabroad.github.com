@@ -2,17 +2,12 @@
 
 if [ $# -lt 1 ]
 then
-	echo "usage"
-        echo "	$0 <提交的注释>"
+        echo -n "请输入commit的注释信息"
         read commit_message
-
 else
-
-echo "first-args=$1"
-commit_message="$1"
-
+	echo "first-args=$1"
+	commit_message="$1"
 fi
-
 
 git pull
 git add . -A
