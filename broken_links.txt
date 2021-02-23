@@ -1,5 +1,5 @@
-http://www.flyabroadvisa.com/federal/occus.html ( parent page: http://pg.flyabroadvisa.com )
-http://pg.flyabroadvisa.com/ass ( parent page: http://pg.flyabroadvisa.com )
+http://www.flyabroadvisa.com/federal/occus.html ( parent page: https://pg.flyabroad.hk )
+https://pg.flyabroad.hk/ass ( parent page: https://pg.flyabroad.hk )
 http://www.flyabroadvisa.com/skillselect/zdb ( parent page: http://www.flyabroadvisa.com/skillselect/ )
 http://www.flyabroadvisa.com/noc/0114.html ( parent page: http://www.flyabroadvisa.com/noc/ )
 http://www.flyabroadvisa.com/lang ( parent page: http://www.flyabroadvisa.com/nsnp/ )
